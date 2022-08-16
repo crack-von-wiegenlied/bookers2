@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Bookers2</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -12,27 +12,56 @@
 
   <body>
     <header>
-      <div>
-        <h1><%= link_to "Bookers", root_path %></h1>
-      </div>
-
-      <li>
-        <%= link_to "Home", users_path %>
-      </li>
-
-      <% if user_signed_in? %>
-        <li>
-          <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-        </li>
-      <% else %>
-        <li>
-          <%= link_to "Sign up", new_user_registration_path %>
-        </li>
-        <li>
-          <%= link_to "Log in",new_user_session_path %>
-        </li>
-      <% end %>
+      <nav class="navbar navber-expand-lg navber-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand text-light" href="/"><span>Bookers</span></a>
+          <button class="navber-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                  aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navber-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <% if user_signed_in? %>
+                <li class="nav-item">
+                <%= link_to "Home", users_path, class:'nav-link text-light' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "Books", books_path, class:'nav-link text-light' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "Users", users_path, class:'nav-link text-light' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "Log out", destroy_user_session_path, method: :delete, class:'nav-link text-light' %>
+                </li>
+              <% else %>
+                <li class="nav-item">
+                <%= link_to "Home", users_path, class:'nav-link text-light' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "About", about_path, class:'nav-link text-light' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "Sign up", new_user_registration_path, class:'nav-link text-light' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "Log in",new_user_session_path, class:'nav-link text-light' %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </header>
     <%= yield %>
+    <footer>
+      <div class="container mt-5">
+        <div class="row">
+          <div class="mx-auto">
+            <p>CopyRight Infratop.inc</p>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
