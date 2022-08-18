@@ -1,8 +1,11 @@
 class Book < ApplicationRecord
   belongs_to :user
   has_one_attached :image
-  
+
   has_one_attached :book_image
+
+  validates :title, presence: true
+  validates :body, presence: true
 
   def get_book_image(width, height)
     unless book_image.attached?

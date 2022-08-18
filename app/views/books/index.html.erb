@@ -1,4 +1,24 @@
 <div class="container">
+   <% if @createdbook.errors.any? %>
+    <div id="error-explanation">
+      <h3><%= @createdbook.errors.count %> errors prohibited this obj from being saved:</h3>
+      <ul>
+        <% @createdbook.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% elsif @createdbook.errors.count == 1 %>
+    <div id="error-explanation">
+      <h3><%= @createdbook.errors.count %> error prohibited this obj from being saved:</h3>
+      <ul>
+        <% @createdbook.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="row">
     <div class="cpl-md-3">
       <h2>User info</h2>
@@ -54,7 +74,7 @@
             <tr>
               <td>
                 <%= link_to user_path(book.user.id) do  %>
-                  <%= image_tag book.get_book_image(100, 100) %>
+                  <%= image_tag book.user.get_profile_image(100, 100) %>
                 <% end %>
               </td>
               <td>
