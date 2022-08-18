@@ -3,7 +3,7 @@
 <% end %>
 <div class="container">
   <div class="row">
-    <div class="cpl-md-3">
+    <div class="col-md-3">
       <h2>User info</h2>
       <%= image_tag @user.get_profile_image(100,100) %>
       <table class="table">
@@ -20,7 +20,7 @@
       </tbody>
       </table>
       <div class="row">
-        <%= link_to user_path(current_user.id), class:'btn btn-outline-secondary btn-block' do %>
+        <%= link_to edit_user_path(@user.id), class:'btn btn-outline-secondary btn-block' do %>
            <i class="fas fa-user-cog"></i>
         <% end %>
       </div>
@@ -62,7 +62,7 @@
                 <%= link_to "Edit", edit_book_path, class:'btn btn-sm btn-success' %>
               </td>
               <td>
-                <%= link_to "destroy", book_path(@createdbooks.id), method: :delete, "data-confirm" =>"本当に消しますか？",
+                <%= link_to "Destroy", book_path(@createdbooks.id), method: :delete, "data-confirm" =>"本当に消しますか？",
                 class:'btn btn-sm btn-danger' %>
               </td>
               <% end %>

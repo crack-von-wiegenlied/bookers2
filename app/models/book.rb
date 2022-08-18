@@ -5,7 +5,7 @@ class Book < ApplicationRecord
   has_one_attached :book_image
 
   validates :title, presence: true
-  validates :body, presence: true
+  validates :body, presence: true, length: { maximum: 200 }
 
   def get_book_image(width, height)
     unless book_image.attached?
