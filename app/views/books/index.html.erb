@@ -1,3 +1,6 @@
+<% if flash[:notice] %>
+  <p><%= notice %></p>
+<% end %>
 <div class="container">
    <% if @createdbook.errors.any? %>
     <div id="error-explanation">
